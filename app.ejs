@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Store</title>
+    <script>
+        const loadapi = () => {
+    fetch("https://fakestoreapi.com/products")
+    
+      .then ((res) => res.json())
+      .then ((data) => getproduct(data))
+
+
+};
+
+
+
+
+const displayproduct = (product) =>{
+    return (`
+
+           <div class="product">
+              <img src=" ${product.image}" alt="" >
+              <h2> Title : ${product.title}</h2>
+              <h2> price : ${product.price}</h2>
+              <h2> Rating : ${product.rating.rate}</h2>
+              <h2> Description: ${product.description}</h2>
+              <h2> Category : ${product.category}</h2>
+              <a href="buy"><button action="submit" name="exm"> Buy Now </button></a>
+              <select>
+                <option>Qty:0</option>
+                <option>Qty:1</option>
+                <option>Qty:2</option>
+                <option>Qty:3</option>
+                <option>Qty:4</option>
+                <option>Qty:5</option>
+                <option>Qty:6</option>
+              </select>
+              
+             
+              <h5> Free delivery 🛒</h5>
+
+              
+            </div>    
+             
+
+        
+        
+        
+        
+            `)
+};
+
+const getproduct = (products) =>{
+    const displayui = products.map((product) => displayproduct(product));
+    const contain = document.getElementById('products')
+    contain.innerHTML =displayui.join()
+    
+};
+loadapi();
+
+    </script>
+  
+    <style>
+        body{
+    width: 1300px;
+    min-width: 200px;
+    background-color: rgb(14, 14, 48);
+    margin: 0px;
+    padding: 0px;
+}
+h1{
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: black;
+    margin: 0px;
+    padding: 15px;
+}
+.products{
+    max-width: 200px;
+    margin: 20px auto;
+
+    display: grid;
+    grid-template-columns: repeat(4 ,1fr);
+    gap: 50px;
+}
+
+.product{
+    background-color:#072652;
+    border: 1px solid green;
+    padding: 15px;
+    border-radius: 10px;
+}
+img{
+    width: 120px;
+    height: 150px;
+}
+h2{
+    color: white;
+}
+.btn{
+    margin-left: 250px;
+    margin-top: 200px;
+}
+
+h2 title{
+    color: darkblue;
+}
+button:hover{
+
+    background-color: rgb(14, 85, 240);
+    color: white;
+}
+button{
+    padding: 10px;
+}
+h5{
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <h1>API STORE 😎</h1>
+    
+    <div id="products" class="product">
+        <!-- <button class="btn">Buy Now</button> -->
+
+    
+      
+
+
+    </div>
+   
+
+   
+    
+</body>
+</html>
